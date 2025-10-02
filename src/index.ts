@@ -4,6 +4,7 @@ import { tasksRouter } from "./endpoints/tasks/router";
 import { bookingRouter } from "./endpoints/booking/router";
 import { ContentfulStatusCode } from "hono/utils/http-status";
 import { DummyEndpoint } from "./endpoints/dummyEndpoint";
+import { TestEndpoint } from "./endpoints/testEndpoint";
 
 // Start a Hono app
 const app = new Hono<{ Bindings: Env }>();
@@ -49,6 +50,7 @@ openapi.route("/booking", bookingRouter);
 
 // Register other endpoints
 openapi.post("/dummy/:slug", DummyEndpoint);
+openapi.post("/test", TestEndpoint);
 
 // Export the Hono app
 export default app;
