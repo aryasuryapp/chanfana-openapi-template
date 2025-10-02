@@ -1,6 +1,7 @@
 import { ApiException, fromHono } from "chanfana";
 import { Hono } from "hono";
 import { tasksRouter } from "./endpoints/tasks/router";
+import { bookingRouter } from "./endpoints/booking/router";
 import { ContentfulStatusCode } from "hono/utils/http-status";
 import { DummyEndpoint } from "./endpoints/dummyEndpoint";
 
@@ -42,6 +43,9 @@ const openapi = fromHono(app, {
 
 // Register Tasks Sub router
 openapi.route("/tasks", tasksRouter);
+
+// Register Booking Sub router
+openapi.route("/booking", bookingRouter);
 
 // Register other endpoints
 openapi.post("/dummy/:slug", DummyEndpoint);
